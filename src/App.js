@@ -6,6 +6,10 @@ import "./res/css/style.css";
 function App() {
   // Declare a new state variable
   const [searchText, setSearchText] = useState("");
+  //Function to get current year.
+  const currentYear = () => {
+    return new Date().getFullYear();
+  };
   return (
     <>
       {/* Main container */}
@@ -60,6 +64,7 @@ function App() {
           style={{
             textAlign: "center",
             padding: "6%",
+            marginBottom: "10%",
           }}
         >
           {/* Row */}
@@ -117,6 +122,21 @@ function App() {
             </div>
           </div>
         </div>
+        {/* Bottom */}
+        <footer
+          style={{
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Copyright© {currentYear()} Demario Douce. All rights reserved.
+          </p>
+        </footer>
       </div>
     </>
   );
