@@ -1,3 +1,6 @@
+// CSS
+import "./res/css/style.css";
+
 function App() {
   return (
     <>
@@ -33,7 +36,7 @@ function App() {
               padding: "10px 30px",
               fontSize: "16px",
               margin: "10px 10px",
-              border: "2px solid #fff",
+              border: "1px solid #fff",
               fontWeight: "bold",
             }}
           >
