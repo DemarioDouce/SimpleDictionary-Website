@@ -1,7 +1,11 @@
+// React
+import React, { useState } from "react";
 // CSS
 import "./res/css/style.css";
 
 function App() {
+  // Declare a new state variable
+  const [searchText, setSearchText] = useState(0);
   return (
     <>
       {/* Main container */}
@@ -29,7 +33,8 @@ function App() {
               borderRadius: "4px",
               boxSizing: "border-box",
             }}
-            id="search"
+            onChange={(e) => setSearchText(e.target.value)}
+            required
           />
           {/* Submit button */}
           <button
