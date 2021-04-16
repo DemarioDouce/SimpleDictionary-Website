@@ -5,7 +5,7 @@ import "./res/css/style.css";
 
 function App() {
   // Declare a new state variable
-  const [searchText, setSearchText] = useState(0);
+  const [searchText, setSearchText] = useState("");
   return (
     <>
       {/* Main container */}
@@ -18,7 +18,7 @@ function App() {
         }}
       >
         {/* Header text */}
-        <h1>SEARCH FOR A WORD</h1>
+        <h1 style={{ fontWeight: "bold" }}>SEARCH FOR A WORD</h1>
         {/* Form */}
         <form>
           {/* Input */}
