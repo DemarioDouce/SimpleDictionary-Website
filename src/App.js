@@ -56,7 +56,67 @@ function App() {
           </form>
         </div>
         {/* Middle */}
-        <div>{searchText}</div>
+        <div
+          style={{
+            textAlign: "center",
+            padding: "6%",
+          }}
+        >
+          {/* Row */}
+          <div class="row">
+            {/* Col */}
+            <div class="col-sm">
+              {/* Card */}
+              <div
+                class="card"
+                style={{
+                  width: "18rem",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
+              >
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">{searchText}</p>
+                </div>
+              </div>
+            </div>
+            {/* Col */}
+            <div class="col-sm">
+              {/* Card */}
+              <div
+                class="card"
+                style={{
+                  width: "18rem",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
+              >
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">{searchText}</p>
+                </div>
+              </div>
+            </div>
+            {/* Col */}
+            <div class="col-sm">
+              {/* Card */}
+              <div
+                class="card"
+                style={{
+                  width: "18rem",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
+              >
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">{searchText}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

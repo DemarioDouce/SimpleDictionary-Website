@@ -8,3 +8,7 @@
   padding-right: 0%;
   padding-left: 0%;
 }
+
+.row > * {
+  margin-bottom: 2%;
+}
