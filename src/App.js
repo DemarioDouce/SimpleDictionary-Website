@@ -4,6 +4,7 @@ import "./res/css/style.css";
 function App() {
   return (
     <>
+      {/* Main container */}
       <div
         class="container-fluid"
         style={{
@@ -12,8 +13,11 @@ function App() {
           padding: "6%",
         }}
       >
+        {/* Header text */}
         <h1>SEARCH FOR A WORD</h1>
+        {/* Form */}
         <form>
+          {/* Input */}
           <input
             type="text"
             class="form-control"
@@ -27,6 +31,7 @@ function App() {
             }}
             id="search"
           />
+          {/* Submit button */}
           <button
             type="submit"
             class="btn"
