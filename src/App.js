@@ -2,12 +2,26 @@
 import React, { useState } from "react";
 // CSS
 import "./res/css/style.css";
+// Load axios package
+import axios from "axios";
 
 function App() {
   // Declare a new state variable
   const [searchText, setSearchText] = useState("");
   // Get current year
   const currentYear = new Date().getFullYear();
+  // Handle submission
+  const submission = (e) => {
+    e.preventDefault();
+    axios
+      .get("https://api.dictionaryapi.dev/api/v2/entries/en_US/" + searchText)
+      .then((result) => {
+        console.log("result.data:", result.data[0].word);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -24,7 +38,7 @@ function App() {
           {/* Top header text */}
           <h1 style={{ fontWeight: "bold" }}>SEARCH FOR A WORD</h1>
           {/* Form */}
-          <form>
+          <form onSubmit={submission}>
             {/* Input */}
             <input
               type="text"
