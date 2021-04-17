@@ -6,10 +6,9 @@ import "./res/css/style.css";
 function App() {
   // Declare a new state variable
   const [searchText, setSearchText] = useState("");
-  //Function to get current year.
-  const currentYear = () => {
-    return new Date().getFullYear();
-  };
+  // Get current year
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       {/* Main container */}
@@ -35,8 +34,8 @@ function App() {
                 padding: "12px 20px",
                 margin: "8px auto 0 auto",
                 border: "1px solid #ccc",
-                borderRadius: "4px",
                 boxSizing: "border-box",
+                borderRadius: "8px",
               }}
               onChange={(e) => setSearchText(e.target.value)}
               required
@@ -53,6 +52,7 @@ function App() {
                 margin: "10px 10px",
                 border: "1px solid #fff",
                 fontWeight: "bold",
+                borderRadius: "8px",
               }}
             >
               SEARCH
@@ -134,7 +134,7 @@ function App() {
               marginRight: "auto",
             }}
           >
-            Copyright© {currentYear()} Demario Douce. All rights reserved.
+            Copyright© {currentYear} Demario Douce. All rights reserved.
           </p>
         </footer>
       </div>
