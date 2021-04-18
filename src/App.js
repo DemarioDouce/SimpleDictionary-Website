@@ -8,6 +8,8 @@ import axios from "axios";
 function App() {
   // Declare a new state variable
   const [searchText, setSearchText] = useState("");
+  const [definitionText, setDefinitionText] = useState("");
+  const [exampleText, setExampleText] = useState("");
   // Get current year
   const currentYear = new Date().getFullYear();
   // Handle submission
@@ -16,17 +18,18 @@ function App() {
     axios
       .get("https://api.dictionaryapi.dev/api/v2/entries/en_US/" + searchText)
       .then((result) => {
-        console.log("result.data:", result.data[0].word);
+        setDefinitionText(result.data[0].meanings[0].definitions[0].definition);
+        setExampleText(result.data[0].meanings[0].definitions[0].example);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("There is an error, please check the word and try again.");
       });
   };
 
   return (
     <>
       {/* Main container */}
-      <div class="container-fluid">
+      <div className="container-fluid">
         {/* Top */}
         <div
           style={{
@@ -42,7 +45,7 @@ function App() {
             {/* Input */}
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               style={{
                 width: "50%",
                 padding: "12px 20px",
@@ -57,7 +60,7 @@ function App() {
             {/* Submit button */}
             <button
               type="submit"
-              class="btn"
+              className="btn"
               style={{
                 backgroundColor: "#edffa9",
                 color: "#000",
@@ -82,55 +85,38 @@ function App() {
           }}
         >
           {/* Row */}
-          <div class="row">
+          <div className="row">
             {/* Col */}
-            <div class="col-sm">
+            <div className="col-sm">
               {/* Card */}
               <div
-                class="card"
+                className="card"
                 style={{
                   width: "18rem",
                   marginLeft: "auto",
                   marginRight: "auto",
                 }}
               >
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">{searchText}</p>
+                <div className="card-body">
+                  <h5 className="card-title">Definition</h5>
+                  <p className="card-text">{definitionText}</p>
                 </div>
               </div>
             </div>
             {/* Col */}
-            <div class="col-sm">
+            <div className="col-sm">
               {/* Card */}
               <div
-                class="card"
+                className="card"
                 style={{
                   width: "18rem",
                   marginLeft: "auto",
                   marginRight: "auto",
                 }}
               >
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">{searchText}</p>
-                </div>
-              </div>
-            </div>
-            {/* Col */}
-            <div class="col-sm">
-              {/* Card */}
-              <div
-                class="card"
-                style={{
-                  width: "18rem",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                }}
-              >
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">{searchText}</p>
+                <div className="card-body">
+                  <h5 className="card-title">Example</h5>
+                  <p className="card-text">{exampleText}</p>
                 </div>
               </div>
             </div>
