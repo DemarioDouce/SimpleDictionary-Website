@@ -69,7 +69,6 @@ function App() {
         <div className="middle-container">
           {showScreen ? (
             <>
-              {" "}
               {/* Row */}
               <div className="row">
                 {/* Col */}
