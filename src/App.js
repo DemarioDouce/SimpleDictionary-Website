@@ -1,12 +1,12 @@
-// React
+// Load react package
 import React, { useState } from "react";
-// CSS
+// Load external CSS
 import "./res/css/style.css";
 // Load axios package
 import axios from "axios";
 
 function App() {
-  // Declare a new state variable
+  // Declare new state variables
   const [searchText, setSearchText] = useState("");
   const [definitionText, setDefinitionText] = useState("");
   const [exampleText, setExampleText] = useState("");
@@ -18,10 +18,14 @@ function App() {
     axios
       .get("https://api.dictionaryapi.dev/api/v2/entries/en_US/" + searchText)
       .then((result) => {
+        console.log(result);
+        // Set definitionText
         setDefinitionText(result.data[0].meanings[0].definitions[0].definition);
+        // Set exampleText
         setExampleText(result.data[0].meanings[0].definitions[0].example);
       })
       .catch((error) => {
+        console.log(error);
         console.log("There is an error, please check the word and try again.");
       });
   };
