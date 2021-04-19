@@ -11,6 +11,8 @@ function App() {
   const [definitionText, setDefinitionText] = useState("");
   const [exampleText, setExampleText] = useState("");
   const [audioSrc, setAudioSrc] = useState("");
+  const [showLoading, setShowLoading] = useState(false);
+  const [showScreen, setShowScreen] = useState(false);
   // Get current year
   const currentYear = new Date().getFullYear();
   // Handle submission
@@ -20,6 +22,10 @@ function App() {
       .get("https://api.dictionaryapi.dev/api/v2/entries/en_US/" + searchText)
       .then((result) => {
         console.log(result.data);
+        // Set showLoading
+        setShowLoading(false);
+        // Set showScreen
+        setShowScreen(true);
         // Set definitionText
         setDefinitionText(result.data[0].meanings[0].definitions[0].definition);
         // Set exampleText
@@ -28,8 +34,11 @@ function App() {
         setAudioSrc(result.data[0].phonetics[0].audio);
       })
       .catch((error) => {
+        // Set showLoading
+        setShowLoading(true);
+        // Set showScreen
+        setShowScreen(false);
         console.log(error);
-        console.log("There is an error, please check the word and try again.");
       });
   };
 
@@ -58,41 +67,57 @@ function App() {
         </div>
         {/* Middle */}
         <div className="middle-container">
-          {/* Row */}
-          <div className="row">
-            {/* Col */}
-            <div className="col-sm">
-              {/* Card */}
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Definition</h5>
-                  <p className="card-text">{definitionText}</p>
+          {showScreen ? (
+            <>
+              {" "}
+              {/* Row */}
+              <div className="row">
+                {/* Col */}
+                <div className="col-sm">
+                  {/* Card */}
+                  <div className="card">
+                    <div className="card-body">
+                      <h5 className="card-title">Definition</h5>
+                      <p className="card-text">{definitionText}</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Col */}
+                <div className="col-sm">
+                  {/* Card */}
+                  <div className="card">
+                    <div className="card-body">
+                      <h5 className="card-title">Audio</h5>
+                      <p className="card-text">
+                        <audio src={audioSrc} controls autoPlay />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* Col */}
+                <div className="col-sm">
+                  {/* Card */}
+                  <div className="card">
+                    <div className="card-body">
+                      <h5 className="card-title">Example</h5>
+                      <p className="card-text">{exampleText}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            {/* Col */}
-            <div className="col-sm">
-              {/* Card */}
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Audio</h5>
-                  <p className="card-text">
-                    <audio src={audioSrc} controls autoPlay />
-                  </p>
-                </div>
-              </div>
-            </div>
-            {/* Col */}
-            <div className="col-sm">
-              {/* Card */}
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Example</h5>
-                  <p className="card-text">{exampleText}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+            </>
+          ) : (
+            <>
+              {showLoading && (
+                <>
+                  <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <p>There is an error, please check the word and try again.</p>
+                </>
+              )}
+            </>
+          )}
         </div>
         {/* Bottom */}
         <footer>

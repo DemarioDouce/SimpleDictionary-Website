@@ -50,7 +50,7 @@
 .middle-container {
   text-align: center;
   padding: 6%;
-  margin-bottom: 5%;
+  padding-bottom: 0;
 }
 
 /* CSS elements */
@@ -60,6 +60,7 @@ h1 {
 }
 
 footer {
+  margin-top: 10%;
   text-align: center;
 }
 
