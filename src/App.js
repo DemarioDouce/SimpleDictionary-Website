@@ -10,6 +10,7 @@ function App() {
   const [searchText, setSearchText] = useState("");
   const [definitionText, setDefinitionText] = useState("");
   const [exampleText, setExampleText] = useState("");
+  const [audioSrc, setAudioSrc] = useState("");
   // Get current year
   const currentYear = new Date().getFullYear();
   // Handle submission
@@ -18,11 +19,13 @@ function App() {
     axios
       .get("https://api.dictionaryapi.dev/api/v2/entries/en_US/" + searchText)
       .then((result) => {
-        console.log(result);
+        console.log(result.data);
         // Set definitionText
         setDefinitionText(result.data[0].meanings[0].definitions[0].definition);
         // Set exampleText
         setExampleText(result.data[0].meanings[0].definitions[0].example);
+        // Set setAudioSrc
+        setAudioSrc(result.data[0].phonetics[0].audio);
       })
       .catch((error) => {
         console.log(error);
@@ -64,6 +67,18 @@ function App() {
                 <div className="card-body">
                   <h5 className="card-title">Definition</h5>
                   <p className="card-text">{definitionText}</p>
+                </div>
+              </div>
+            </div>
+            {/* Col */}
+            <div className="col-sm">
+              {/* Card */}
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Audio</h5>
+                  <p className="card-text">
+                    <audio src={audioSrc} controls autoPlay />
+                  </p>
                 </div>
               </div>
             </div>
