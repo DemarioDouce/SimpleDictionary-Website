@@ -16,8 +16,10 @@ function App() {
   // Get current year
   const currentYear = new Date().getFullYear();
   // Handle submission
+
   const submission = (e) => {
     e.preventDefault();
+
     axios
       .get("https://api.dictionaryapi.dev/api/v2/entries/en_US/" + searchText)
       .then((result) => {
