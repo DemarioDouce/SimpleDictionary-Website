@@ -120,10 +120,6 @@ function App() {
             </>
           )}
         </div>
-        {/* Bottom */}
-        <footer>
-          <p>Copyright© {currentYear} Demario Douce. All rights reserved.</p>
-        </footer>
       </div>
     </>
   );
