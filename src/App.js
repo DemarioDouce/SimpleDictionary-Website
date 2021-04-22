@@ -14,7 +14,7 @@ function App() {
   const [showLoading, setShowLoading] = useState(false);
   const [showScreen, setShowScreen] = useState(false);
   // Get current year
-  const currentYear = new Date().getFullYear();
+  //const currentYear = new Date().getFullYear();
   // Handle submission
 
   const submission = (e) => {
